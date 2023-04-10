@@ -1,0 +1,43 @@
+<!-- 
+<div *ngFor="let product of products">
+</div> -->
+<div class="row">
+    <div class="col-md-3">
+        <h5>Catégories</h5>
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action" (click)="filterByCategory('all')">
+                <i class="bi bi-apple"></i>
+                All
+            </a>
+
+            <a class=" list-group-item list-group-item-action"  *ngFor="let c of categories" (click)="filterByCategory(c.name)">
+                <i class="bi bi-{{c.icon}}"></i>
+                {{c.name| titlecase}}
+            </a>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let product of products">
+                <div class="card mb-3">
+                    <a routerLink="/shop-details/{{product.id}}">
+                    <img src="assets/products/product_img{{product.id}}.jpg" class="card-img-top" alt="...">
+                 </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <h5>
+                            {{product.price}} DH
+        
+                            <del class="text-danger">{{product.price + 150}} DH</del>
+                        </h5>
+                        <a  (click)="addToCart(product)" class="btn btn-dark">Ajouter au panier</a>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+    <!-- col -->
+
+</div>
+<!-- row -->

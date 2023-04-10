@@ -1,0 +1,114 @@
+<h2 class="my-4">Cart Page</h2>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a routerLink="../shop" >Shop</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Cart</li>
+    </ol>
+</nav>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <h6>Articles</h6>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of cartItems">
+                        <td>
+                            <img width="30" src="assets/products/product_img{{item.product.id}}.jpg" alt="">
+                        </td>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.product.price }} DH</td>
+                        <td>
+                            <!-- <input type="number" class="form-control w-25" value="1"> -->
+                            <div class="input-group w-50">
+                                <button class="btn btn-outline-secondary fw-bold" type="button"
+                                (click)="decrementQuantity(item)" >
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                                <input type="text" readonly class="form-control text-center" placeholder="Quantity:"
+                                    value="{{ item.quantity }}" id="qt_1">
+
+                                <button class="btn btn-outline-secondary fw-bold" type="button"
+                                (click)="incrementQuantity(item)" >
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td>{{ item.product.price * item.quantity }} DH</td>
+                        <td>
+                            <i class="bi bi-trash3-fill text-danger fw-bold" (click)="removeFromCart(item)"></i>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- col -->
+
+
+    <div class="col-md-4">
+
+        <h6>Summary Of Your Order</h6>
+
+        <div class="bg-light p-3 rounded">
+
+
+            <div class="d-flex mb-3">
+                <div class="me-auto">
+                    <input type="text" class="form-control" placeholder="COUPON CODE">
+                </div>
+                <div>
+                    <button class="btn btn-dark fw-bold">Apply</button>
+                </div>
+            </div>
+            <!-- d-flex -->
+
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center fw-bold bg-transparent">
+                    Order Summary
+                    <span class="badge bg-dark rounded-pill">
+                        {{ getTotalPrice() }} DH
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center fw-bold bg-transparent">
+                    Discount
+                    <span class="badge bg-dark rounded-pill">
+                        200,00 DH
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center fw-bold bg-transparent">
+                    Total To Pay
+                    <span class="badge bg-dark rounded-pill">
+                        650,00 DH
+                    </span>
+                </li>
+            </ul>
+
+            <a href="proced_checkout.html" class="btn btn-dark fw-bold mt-3 rounded">
+                <i class="fa-solid fa-money-check-dollar"></i>
+                Proced To Chekout
+            </a>
+
+        </div>
+        <!-- bg-light -->
+
+    </div>
+    <!-- col -->
+
+</div>
+<!-- row -->

@@ -1,0 +1,41 @@
+<div class="card  w-75 row justify-content-center mx-auto mt-3" *ngIf="products$ | async as products">
+    <div class="card-header">
+       <h2>List of products</h2>
+    </div>
+    <div class="input-group m-auto mt-2">
+        <button type="button" class="btn btn-success " routerLink="../form">Add a product</button>
+        <input type="text" placeholder="search"  class="form-control " [(ngModel)]="searchTerm" (keyup)="search()">
+    </div>
+    <table class="table ">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">PRICE</th>
+            <th scope="col">CATEGORY</th>
+            <th scope="col">ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody class=""  *ngFor="let pro of products"  >
+          <tr>
+            <th scope="row">{{pro.id}}</th>
+            <td>{{pro.name}}</td>
+            <td>{{pro.price}}</td>
+            <td>{{pro.category}}</td>
+            <td>
+                <a routerLink="details/{{pro.id}}" class="btn btn-primary mx-1" >details</a>
+                <button type="button" class="btn btn-success mx-1" routerLink="../form/{{pro.id}}">update</button>
+                <button type="button" class="btn btn-danger mx-1" (click)="deleteProdect(pro.id)">delete</button>
+                
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    
+</div>
+
+
+  
+
+  
