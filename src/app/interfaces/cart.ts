@@ -1,7 +1,7 @@
 import { Product } from "./product";
 
 export interface Cart{
-    id:number;
+    id?:number;
     product:Product;
     quantity:number;
 }

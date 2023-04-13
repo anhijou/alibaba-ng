@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductesService } from 'src/app/services/productes.service';
 
@@ -12,14 +12,16 @@ import { ProductesService } from 'src/app/services/productes.service';
 export class FormComponent implements OnInit{
    
   productForm !: FormGroup ;
-
-  constructor(private fb:FormBuilder,private route:ActivatedRoute,private productService:ProductesService){
+  productlenght!:number;
+  
+  constructor(private fb:FormBuilder,private route:ActivatedRoute,private productService:ProductesService,private router:Router){
 
   }
- 
+   
   ngOnInit() {
+     this.getProductlength();
       this.productForm= this.fb.group({
-        "id": this.productService.getProduct().length+1,
+        "id": this.productlenght+1,
          "name": '',
          "description": '',
          "price": '',
@@ -28,25 +30,32 @@ export class FormComponent implements OnInit{
 
       const productId = Number(this.route.snapshot.paramMap.get('id'));
   if (productId) {
-    let pro =this.productService.getProdectById(productId);
-    if(pro!=null){
-      
-        this.productForm.setValue({
-          id: pro.id,
-          name: pro.name,
-          description: pro.description,
-          price: pro.price,
-          category:pro.category
-        });
-      ;
-    }
+    
+     this.getProductDetails(productId);
     
   }
  
-
       this.productForm.valueChanges.subscribe(console.log);
+  }
 
 
+  getProductlength(){
+    this.productService.getProductApi().subscribe(products => {
+      this.productlenght = products.length;
+      console.log(this.productlenght);
+      });
+   }
+  getProductDetails(productId:number){
+    this.productService.getProductByIdApi(productId).subscribe(product => {
+      this.productForm.setValue({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        category: product.category
+        
+      });
+    });
   }
   onSubmit(productForm:FormGroup) {
     if (productForm.valid) {
@@ -55,13 +64,18 @@ export class FormComponent implements OnInit{
         let product = productForm.value;
       if (productid) {
          
-         this.productService.updateProduct(product);
-         console.log(this.productService.getProduct());
+         this.productService.updateProductApi(product).subscribe();
+         console.log(this.productService.getProductApi());
+
       } else {
         
-        this.productService.createProduct(product);
-        console.log(this.productService.getProduct());
+        this.productService.createProductApi(product).subscribe();
+        console.log(product);
+        console.log(this.productService.getProductApi());
+
       }
+      console.log("done");
+      //this.router.navigate(['admin/dashboard']);
     }
   }
 }

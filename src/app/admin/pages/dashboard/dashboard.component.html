@@ -1,4 +1,4 @@
-<div class="card  w-75 row justify-content-center mx-auto mt-3" *ngIf="products$ | async as products">
+<div class="card  w-75 row justify-content-center mx-auto mt-3" >
     <div class="card-header">
        <h2>List of products</h2>
     </div>
@@ -16,7 +16,7 @@
             <th scope="col">ACTIONS</th>
           </tr>
         </thead>
-        <tbody class=""  *ngFor="let pro of products"  >
+        <tbody class=""  *ngFor="let pro of productlist"  >
           <tr>
             <th scope="row">{{pro.id}}</th>
             <td>{{pro.name}}</td>
