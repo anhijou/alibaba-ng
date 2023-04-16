@@ -75,7 +75,7 @@ export class FormComponent implements OnInit{
 
       }
       console.log("done");
-      //this.router.navigate(['admin/dashboard']);
+      this.router.navigate(['admin/dashboard']);
     }
   }
 }

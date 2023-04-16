@@ -17,13 +17,11 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(){
     let id = this.activatedRoute.snapshot.params['id'];
-    this.productDetails = this.productService.getProdectById(id);
-  
-    if (this.productDetails == null) {
-      console.log('error');
-      this.router.navigateByUrl('admin/dashboard');
-    }
+    this.getProductDetails(id);
   }
 
-  
+  getProductDetails(id:number){
+    this.productService.getProductByIdApi(id).subscribe(product=>
+      this.productDetails=product)
+  }
 }

@@ -19,7 +19,7 @@ export class ShopComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.products=this.productsServices.getProduct();
+    this.getProduct();
     this.categoriesService.getCategories().subscribe(categories=>this.categories=categories)
     this.productsServices.getProductApi().subscribe(products=>this.products=products);
    }
@@ -33,9 +33,19 @@ filterByCategory(category:string){
 }  
  
 addToCart(product:Product){
+  this.cartservice.getCartbyIdApi(product.id).subscribe()
+
   let newCartItem: Cart = { id: product.id,  product: product, quantity: 1 };
-  this.cartservice.addToCartApi(newCartItem);
+  this.cartservice.addToCartApi(newCartItem).subscribe(cart=>{
+    if
+  });
   //this.router.navigate(['cart']);
 }
+getProduct(){
+  this.productsServices.getProductApi().subscribe(product=>{
+    this.products=product
+  })
+}
+
 
 }

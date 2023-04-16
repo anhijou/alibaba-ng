@@ -75,11 +75,5 @@ export class ProductesService {
     return this.http.post<Product>(this.API_URL, product);
   }
   //////////////////////////////
-  searchProducts(searchTerm: string): Product[] {
-    return this.products.filter(product =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      || product.description.toLowerCase().includes(searchTerm.toLowerCase()) || product.category.toLowerCase().includes(searchTerm.toLowerCase())
-      || product.price.toString().includes(searchTerm.toLowerCase())
-    );
-  }
+  
 }

@@ -37,7 +37,7 @@ export class CartService {
 
   cartItem!: Observable<Cart>;
 
-  getCartbyId(id:number){
+  getCartbyIdApi(id:number){
     const url = `${this.cartItems}/${id}`;
     return this.http.get<Cart>(url);
 
@@ -45,17 +45,8 @@ export class CartService {
 
   addToCartApi(cart: Cart) {
 
-//   this.cartItem=this.getCartbyId(cart.id);
-  
-//   this.http.post<Product>(this.cartItems, product).subscribe(); 
-//   const value = this.cartItem.toPromise;
-//   console.log(value);
-//   let myVariable: any;
+   this.http.post<Product>(this.cartItems, cart).subscribe(); 
 
-// this.cartItem.subscribe(value => {
-//   myVariable = value;
-// });
-// console.log(myVariable);
  }
     
  
