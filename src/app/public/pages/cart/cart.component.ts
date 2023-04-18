@@ -23,19 +23,24 @@ export class CartComponent implements OnInit {
   }
 
   incrementQuantity(product: Cart) {
-    this.cartservice.incrementQuantity(product);
-    this.getTotalPrice();
+    this.cartservice.incrementQuantity(product).subscribe(()=>{
+      this.getTotalPrice();
+    });
+    
   }
   decrementQuantity(product: Cart) {
-    this.cartservice.decrementQuantity(product);
-    this.getTotalPrice();
+    this.cartservice.decrementQuantity(product).subscribe(()=>{
+      this.getTotalPrice();
+    });
+    
   }
 
   removeFromCart(id: number | undefined) {
     this.cartservice.removeProductApi(id).subscribe(() => {
       this.cartItems = this.cartItems.filter(item => item.id != id);
+      this.getTotalPrice();
     });
-    this.getTotalPrice();
+    
   }
 
   getTotalPrice() {

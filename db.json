@@ -1,94 +1,102 @@
 {
-    "categories": [
-        {
-            "id": 1,
-            "icon": "phone",
-            "name": "iphone"
-        },
-        {
-            "id": 2,
-            "icon": "tablet",
-            "name": "ipad"
-        },
-        {
-            "id": 3,
-            "icon": "laptop",
-            "name": "macbook"
-        },
-        {
-            "id": 4,
-            "icon": "display",
-            "name": "imac"
-        },
-        {
-            "id": 5,
-            "icon": "smartwatch",
-            "name": "Apple Watch"
-        }
-    ],
-    "products": [
-        {
-            "id": 1,
-            "name": "Produit 1",
-            "description": "Description produit 1",
-            "price": 10,
-            "category": "iphone"
-        },
-        {
-            "id": 2,
-            "name": "Produit 2",
-            "description": "Description produit 2",
-            "price": "200",
-            "category": "ipad"
-        },
-        {
-            "id": 3,
-            "name": "Produit 3",
-            "description": "Description produit 3",
-            "price": "400",
-            "category": "iphone"
-        }
-    ],
-    "Cart": [
-        {
-            "id": 1,
-            "product": {
-                "id": 1,
-                "name": "Produit 1",
-                "description": "Description produit 1",
-                "price": 10,
-                "category": "iphone"
-            },
-            "quantity": 6
-        },
-        {
-            "id": 3,
-            "product": {
-                "id": 3,
-                "name": "Produit 3",
-                "description": "Description produit 3",
-                "price": "400",
-                "category": "iphone"
-            },
-            "quantity": 1
-        },
-        {
-            "id": 2,
-            "product": {
-                "id": 2,
-                "name": "Produit 2",
-                "description": "Description produit 2",
-                "price": "200",
-                "category": "ipad"
-            },
-            "quantity": 1
-        }
-    ],
-    "Discount": [
-        {
-            "id": 1,
-            "code": "testd",
-            "discount": 280
-        }
-    ]
+  "categories": [
+    {
+      "id": 1,
+      "icon": "phone",
+      "name": "iphone"
+    },
+    {
+      "id": 2,
+      "icon": "tablet",
+      "name": "ipad"
+    },
+    {
+      "id": 3,
+      "icon": "laptop",
+      "name": "macbook"
+    },
+    {
+      "id": 4,
+      "icon": "display",
+      "name": "imac"
+    },
+    {
+      "id": 5,
+      "icon": "smartwatch",
+      "name": "Apple Watch"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Produit 1",
+      "description": "Description produit 1",
+      "price": 10,
+      "category": "iphone"
+    },
+    {
+      "id": 2,
+      "name": "Produit 2",
+      "description": "Description produit 2",
+      "price": "200",
+      "category": "ipad"
+    },
+    {
+      "id": 3,
+      "name": "Produit 3",
+      "description": "Description produit 3",
+      "price": "400",
+      "category": "iphone"
+    },
+    {
+      "id": 4,
+      "name": "Produit 4",
+      "description": "Description produit 4",
+      "price": 40,
+      "category": "ipad"
+    },
+    {
+      "id": 5,
+      "name": "Produit 5",
+      "description": "Description produit 5",
+      "price": 50,
+      "category": "ipad"
+    },
+    {
+      "id": 6,
+      "name": "Produit 6",
+      "description": "Description produit 6",
+      "price": 60,
+      "category": "ipad"
+    },
+    {
+      "id": 7,
+      "name": "Produit 7",
+      "description": "Description produit 7",
+      "price": 70,
+      "category": "ipad"
+    },
+    {
+      "id": 8,
+      "name": "produuct 8",
+      "description": "description product 8",
+      "price": "80",
+      "category": "iphone"
+    },
+    {
+      "id": 9,
+      "name": "Produit 9",
+      "description": "Description produit 9",
+      "price": 90,
+      "category": "ipad"
+    }
+  ],
+  "Cart": [],
+  "Discount": [
+    {
+      "id": 1,
+      "code": "testd",
+      "discount": 280
+    }
+  ]
 }

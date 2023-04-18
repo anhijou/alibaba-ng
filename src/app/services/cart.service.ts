@@ -97,7 +97,7 @@ export class CartService {
   incrementQuantity(item: Cart) {
     const url = `${this.cartItems}/${item.id}`;
     item.quantity++;
-    this.http.put<Cart>(url, item).subscribe();
+   return this.http.put<Cart>(url, item);
 
   }
   //////////////////////////////////////////////////////////////////////////
@@ -106,8 +106,8 @@ export class CartService {
     const url = `${this.cartItems}/${item.id}`;
     if (item.quantity > 1) {
       item.quantity--;
-      this.http.put<Cart>(url, item).subscribe();
     }
+    return this.http.put<Cart>(url, item);
   }
 
 
