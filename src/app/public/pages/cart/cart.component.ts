@@ -24,11 +24,13 @@ decrementQuantity(product:Cart){
 ngOnInit(){
     this.cartservice.getCartApi().subscribe(cart=>this.cartItems=cart);
 }
-removeFromCart(product:Cart){
-this.cartservice.removeProductApi(product);
+removeFromCart(id:number|undefined){
+this.cartservice.removeProductApi(id).subscribe(()=>{
+  this.cartItems=this.cartItems.filter(item=>item.id!=id);
+});
 }
 
 getTotalPrice(){
-  return this.cartservice.getTotalPriceApi();
+  return this.cartservice.getTotalPriceApi().subscribe();
 }
 }

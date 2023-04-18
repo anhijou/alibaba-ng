@@ -33,13 +33,21 @@ filterByCategory(category:string){
 }  
  
 addToCart(product:Product){
-  this.cartservice.getCartbyIdApi(product.id).subscribe()
-
   let newCartItem: Cart = { id: product.id,  product: product, quantity: 1 };
-  this.cartservice.addToCartApi(newCartItem).subscribe(cart=>{
-    if
-  });
-  //this.router.navigate(['cart']);
+
+  this.cartservice.getCartApi().subscribe(cart=>{
+    const indx = cart.findIndex(item => item.id === newCartItem.id);
+   if(indx !== -1){
+    cart[indx].quantity++;
+        this.cartservice.updateCartQuantity(cart[indx]).subscribe();
+   }else{
+     this.cartservice.addToCartApi(newCartItem).subscribe();
+   }
+  })
+
+  
+
+ 
 }
 getProduct(){
   this.productsServices.getProductApi().subscribe(product=>{

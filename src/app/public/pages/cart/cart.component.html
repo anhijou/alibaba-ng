@@ -50,7 +50,7 @@
                         </td>
                         <td>{{ item.product.price * item.quantity }} DH</td>
                         <td>
-                            <i class="bi bi-trash3-fill text-danger fw-bold" (click)="removeFromCart(item)"></i>
+                            <i class="bi bi-trash3-fill text-danger fw-bold" (click)="removeFromCart(item.id)"></i>
                         </td>
                     </tr>
 

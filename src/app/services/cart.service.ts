@@ -45,10 +45,13 @@ export class CartService {
 
   addToCartApi(cart: Cart) {
 
-   this.http.post<Product>(this.cartItems, cart).subscribe(); 
+   return this.http.post<Cart[]>(this.cartItems, cart); 
 
  }
-    
+    updateCartQuantity(cart:Cart){
+      const url = `${this.cartItems}/${cart.id}`;
+      return this.http.put<Cart>(url, cart); 
+    }
  
 
 
@@ -63,13 +66,11 @@ export class CartService {
   //   }
   // }
 
-  removeProductApi(product:Cart){
-    const url = `${this.cartItems}/${product.id}`;
-    this.http.get<Cart>(url).subscribe((item: Cart) => {
-      if (item) {
-        this.http.delete<Cart>(url).subscribe();
-      } 
-    });
+  removeProductApi(id:number|undefined){
+    const url = `${this.cartItems}/${id}`;
+    
+       return this.http.delete<Cart>(url);
+     
   }
 
 
