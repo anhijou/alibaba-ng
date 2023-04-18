@@ -3,7 +3,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item"><a routerLink="../shop" >Shop</a></li>
+        <li class="breadcrumb-item"><a routerLink="../shop">Shop</a></li>
         <li class="breadcrumb-item active" aria-current="page">Cart</li>
     </ol>
 </nav>
@@ -36,14 +36,14 @@
                             <!-- <input type="number" class="form-control w-25" value="1"> -->
                             <div class="input-group w-50">
                                 <button class="btn btn-outline-secondary fw-bold" type="button"
-                                (click)="decrementQuantity(item)" >
+                                    (click)="decrementQuantity(item)">
                                     <i class="bi bi-dash"></i>
                                 </button>
                                 <input type="text" readonly class="form-control text-center" placeholder="Quantity:"
                                     value="{{ item.quantity }}" id="qt_1">
 
                                 <button class="btn btn-outline-secondary fw-bold" type="button"
-                                (click)="incrementQuantity(item)" >
+                                    (click)="incrementQuantity(item)">
                                     <i class="bi bi-plus"></i>
                                 </button>
                             </div>
@@ -70,10 +70,11 @@
 
             <div class="d-flex mb-3">
                 <div class="me-auto">
-                    <input type="text" class="form-control" placeholder="COUPON CODE">
+                    <input type="text" [(ngModel)]="code" class="form-control" placeholder="COUPON CODE">
+                    <span *ngIf="test" class="text-danger">THIS COUPON IS NOT VALIDE</span>
                 </div>
                 <div>
-                    <button class="btn btn-dark fw-bold">Apply</button>
+                    <button (click)="getDiscountNumber()" class="btn btn-dark fw-bold">Apply</button>
                 </div>
             </div>
             <!-- d-flex -->
@@ -82,19 +83,19 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center fw-bold bg-transparent">
                     Order Summary
                     <span class="badge bg-dark rounded-pill">
-                        {{ getTotalPrice() }} DH
+                        {{ total }} DH
                     </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center fw-bold bg-transparent">
                     Discount
                     <span class="badge bg-dark rounded-pill">
-                        200,00 DH
+                        {{discountnumber}} DH
                     </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center fw-bold bg-transparent">
                     Total To Pay
                     <span class="badge bg-dark rounded-pill">
-                        650,00 DH
+                        {{total-discountnumber}} DH
                     </span>
                 </li>
             </ul>

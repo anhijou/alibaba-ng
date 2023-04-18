@@ -8,29 +8,59 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit {
 
-  cartItems!:Cart[];
+  cartItems!: Cart[];
+  total: number = 0;
+  code: string = '';
+  discountnumber: number = 0;
+  test: boolean = false;
+  constructor(private cartservice: CartService) { }
 
-constructor(private cartservice:CartService){}
-   
-
-incrementQuantity(product:Cart){
-this.cartservice.incrementQuantity(product);
-}
-decrementQuantity(product:Cart){
-  this.cartservice.decrementQuantity(product);
+  ngOnInit() {
+    this.cartservice.getCartApi().subscribe(cart => this.cartItems = cart);
+    this.getTotalPrice();
   }
-ngOnInit(){
-    this.cartservice.getCartApi().subscribe(cart=>this.cartItems=cart);
-}
-removeFromCart(id:number|undefined){
-this.cartservice.removeProductApi(id).subscribe(()=>{
-  this.cartItems=this.cartItems.filter(item=>item.id!=id);
-});
-}
 
-getTotalPrice(){
-  return this.cartservice.getTotalPriceApi().subscribe();
-}
+  incrementQuantity(product: Cart) {
+    this.cartservice.incrementQuantity(product);
+    this.getTotalPrice();
+  }
+  decrementQuantity(product: Cart) {
+    this.cartservice.decrementQuantity(product);
+    this.getTotalPrice();
+  }
+
+  removeFromCart(id: number | undefined) {
+    this.cartservice.removeProductApi(id).subscribe(() => {
+      this.cartItems = this.cartItems.filter(item => item.id != id);
+    });
+    this.getTotalPrice();
+  }
+
+  getTotalPrice() {
+
+
+    this.total = 0;
+    this.cartservice.getCartApi().subscribe(cart => {
+      for (const item of cart) {
+        this.total += item.product.price * item.quantity;
+      }
+    });
+
+  }
+
+  getDiscountNumber() {
+    this.cartservice.getDiscountApi().subscribe(discount => {
+      const indx = discount.findIndex(item => item.code === this.code);
+
+      if (indx !== -1) {
+        this.discountnumber = discount[indx].discount;
+        this.test = false;
+      } else {
+        this.test = true;
+      }
+    });
+
+  }
 }
