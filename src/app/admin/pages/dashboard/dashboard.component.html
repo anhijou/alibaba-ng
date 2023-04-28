@@ -3,7 +3,7 @@
        <h2>List of products</h2>
     </div>
     <div class="input-group m-auto mt-2">
-        <button type="button" class="btn btn-success " routerLink="../form">Add a product</button>
+        <button type="button" class="btn btn-success " routerLink="form">Add a product</button>
         <input type="text" placeholder="search"  class="form-control " [(ngModel)]="searchTerm" (keyup)="search()">
     </div>
     <table class="table ">
@@ -24,7 +24,7 @@
             <td>{{pro.category}}</td>
             <td>
                 <a routerLink="details/{{pro.id}}" class="btn btn-primary mx-1" >details</a>
-                <button type="button" class="btn btn-success mx-1" routerLink="../form/{{pro.id}}">update</button>
+                <button type="button" class="btn btn-success mx-1" routerLink="form/{{pro.id}}">update</button>
                 <button type="button" class="btn btn-danger mx-1" (click)="deleteProdect(pro.id)">delete</button>
                 
             </td>

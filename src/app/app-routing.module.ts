@@ -27,11 +27,11 @@ const routes: Routes = [
     {path: 'admin', component: AdminComponent,canActivate: [AuthGuard], children: [
         {path: 'dashboard', component: DashboardComponent},
         { path: 'dashboard/details', component: DetailsComponent },
-        {path: 'form', component: FormComponent},
-        {path: 'form/:id', component: FormComponent},
+        {path: 'dashboard/form', component: FormComponent},
+        {path: 'dashboard/form/:id', component: FormComponent},
         { path: 'dashboard/details/:id', component: DetailsComponent }
     ]},
-    { path: '**', component: NotFoundComponent },
+    // { path: '**', component: NotFoundComponent },
 ]
 
 @NgModule({

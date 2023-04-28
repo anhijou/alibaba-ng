@@ -80,4 +80,7 @@ export class FormComponent implements OnInit{
       this.router.navigate(['admin/dashboard']);
     }
   }
+  return () {
+    this.router.navigate(['admin/dashboard']);
+  }
 }
