@@ -10,6 +10,8 @@ import { ShopComponent } from './public/pages/shop/shop.component';
 import { PublicComponent } from './public/public.component';
 import { DetailsComponent } from './admin/pages/details/details.component';
 import { FormComponent } from './admin/pages/update/form.component';
+import { AuthGuard } from './admin/auth.guard';
+import { NotFoundComponent } from './public/pages/not-found/not-found.component';
 
 
 
@@ -22,13 +24,14 @@ const routes: Routes = [
         {path: 'login', component: LoginComponent},
         { path: 'shop-details/:id', component: ShopDetailsComponent },
     ]},
-    {path: 'admin', component: AdminComponent, children: [
+    {path: 'admin', component: AdminComponent,canActivate: [AuthGuard], children: [
         {path: 'dashboard', component: DashboardComponent},
         { path: 'dashboard/details', component: DetailsComponent },
         {path: 'form', component: FormComponent},
         {path: 'form/:id', component: FormComponent},
         { path: 'dashboard/details/:id', component: DetailsComponent }
-    ]}
+    ]},
+    { path: '**', component: NotFoundComponent },
 ]
 
 @NgModule({

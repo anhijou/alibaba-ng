@@ -64,17 +64,19 @@ export class FormComponent implements OnInit{
         let product = productForm.value;
       if (productid) {
          
-         this.productService.updateProductApi(product).subscribe();
-         console.log(this.productService.getProductApi());
+         this.productService.updateProductApi(product).subscribe(()=>{
+          this.productService.getProductApi().subscribe();
+         });
+         
 
       } else {
         
-        this.productService.createProductApi(product).subscribe();
-        console.log(product);
-        console.log(this.productService.getProductApi());
+        this.productService.createProductApi(product).subscribe(()=>{
+          this.productService.getProductApi().subscribe();
+         });
+
 
       }
-      console.log("done");
       this.router.navigate(['admin/dashboard']);
     }
   }

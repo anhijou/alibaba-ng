@@ -38,14 +38,14 @@
       "id": 2,
       "name": "Produit 2",
       "description": "Description produit 2",
-      "price": "200",
+      "price": "20",
       "category": "ipad"
     },
     {
       "id": 3,
       "name": "Produit 3",
       "description": "Description produit 3",
-      "price": "400",
+      "price": "300",
       "category": "iphone"
     },
     {
@@ -82,16 +82,21 @@
       "description": "description product 8",
       "price": "80",
       "category": "iphone"
-    },
-    {
-      "id": 9,
-      "name": "Produit 9",
-      "description": "Description produit 9",
-      "price": 90,
-      "category": "ipad"
     }
   ],
-  "Cart": [],
+  "Cart": [
+    {
+      "id": 1,
+      "product": {
+        "id": 1,
+        "name": "Produit 1",
+        "description": "Description produit 1",
+        "price": 10,
+        "category": "iphone"
+      },
+      "quantity": 35
+    }
+  ],
   "Discount": [
     {
       "id": 1,
