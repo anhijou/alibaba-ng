@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoriesService {
 
-  private categories = 'http://localhost:3000/categories';
+  private categories = 'https://api-server-baqy.onrender.com/categories';
 
 constructor(private http:HttpClient) { }
 

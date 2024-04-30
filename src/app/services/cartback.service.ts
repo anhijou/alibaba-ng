@@ -65,7 +65,7 @@ import { Observable } from 'rxjs';
 })
 export class CartService {
 
-  private cartItems= 'http://localhost:3000/Cart';
+  private cartItems= 'https://api-server-baqy.onrender.com/Cart';
   constructor(private http:HttpClient) { }
 
 ////////////////////////////

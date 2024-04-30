@@ -10,8 +10,8 @@ import { Discount } from '../interfaces/discount';
 })
 export class CartService {
 
-  private cartItems = 'http://localhost:3000/Cart';
-  private discount = 'http://localhost:3000/Discount';
+  private cartItems = 'https://api-server-baqy.onrender.com/Cart';
+  private discount = 'https://api-server-baqy.onrender.com/Discount';
   constructor(private http: HttpClient) { }
 
   ////////////////////////////

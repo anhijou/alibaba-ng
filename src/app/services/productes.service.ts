@@ -12,7 +12,7 @@ export class ProductesService {
 
   
 
-    private API_URL='http://localhost:3000/products'
+    private API_URL='https://api-server-baqy.onrender.com/products'
   
   getProductApi(): Observable<Product[]>{
     return this.http.get<Product[]>(this.API_URL);
